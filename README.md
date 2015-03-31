@@ -1,2 +1,1 @@
-# Chronos-Obj-C
-GCD Timers and Utilities
+![](https://raw.githubusercontent.com/Olympus-Library/Resources/master/chronos-header.png)
