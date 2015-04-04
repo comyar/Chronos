@@ -11,7 +11,7 @@ Chronos is part of a larger library for iOS and OS X called [Olympus](https://gi
 
 # Usage 
 
-## Quick Start
+### Quick Start
 
 Chronos is available through Cocoa Pods. Add the following to your Podfile:
 
