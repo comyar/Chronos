@@ -199,7 +199,10 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
 - (void)pause;
 
 /**
- Cancels the timer and resets the invocation count.
+ Permanently cancels the timer.
+ 
+ Attempting to send a start or pause message to a canceled timer is considered
+ an error, and will result in an exception being thrown.
  */
 - (void)cancel;
 
