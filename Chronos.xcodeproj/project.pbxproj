@@ -11,6 +11,7 @@
 		DD8A030B1ACFCC9E003C1CDF /* CHRDispatchTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8A030A1ACFCC9E003C1CDF /* CHRDispatchTimerTests.m */; };
 		DD8A030E1ACFCFD6003C1CDF /* CHRDispatchTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8A030C1ACFCFD6003C1CDF /* CHRDispatchTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD8A030F1ACFCFD6003C1CDF /* CHRDispatchTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8A030D1ACFCFD6003C1CDF /* CHRDispatchTimer.m */; };
+		DD9ED43F1AD09B0D0068D45E /* Chronos.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD5323681AC8DECA00AF0868 /* Chronos.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -22,6 +23,19 @@
 			remoteInfo = Chronos;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DD9ED43D1AD09AF20068D45E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DD9ED43F1AD09B0D0068D45E /* Chronos.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DD5323681AC8DECA00AF0868 /* Chronos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chronos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +168,7 @@
 				DD53236F1AC8DECA00AF0868 /* Sources */,
 				DD5323701AC8DECA00AF0868 /* Frameworks */,
 				DD5323711AC8DECA00AF0868 /* Resources */,
+				DD9ED43D1AD09AF20068D45E /* CopyFiles */,
 			);
 			buildRules = (
 			);
