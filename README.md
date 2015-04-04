@@ -22,6 +22,7 @@ pod 'Chronos'
 ### Using a Dispatch Timer
 
 ```objective-c
+#import <Chronos/Chronos.h>
 
 /** Create and start a timer */
 CHRDispatchTimer timer = [CHRDispatchTimer timerWithInterval:1.0 
