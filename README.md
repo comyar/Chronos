@@ -46,3 +46,8 @@ CHRDispatchTimer timer = [CHRDispatchTimer timerWithInterval:1.0
 # License 
 
 Chronos is available under the [MIT License](LICENSE).
+
+# Contributors
+
+* [@comyarzaheri](https://github.com/comyarzaheri)
+* [@schun93](https://github.com/schun93)
