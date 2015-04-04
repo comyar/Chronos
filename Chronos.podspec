@@ -9,5 +9,5 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "7.0"
   s.osx.deployment_target = "10.9"
   s.source        = { :git => "https://github.com/Olympus-Library/Chronos.git" }
-  s.source_files  = "Chronos/Chronos/Classes/*", "Chronos/Chronos/Classes/**/*.{h,m}"
+  s.source_files  = "Chronos/*.{h,m}", "Chronos/**/*.{h,m}"
 end
