@@ -196,12 +196,12 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 
 - (BOOL)isRunning
 {
-    return (_running & 1);
+    return (_running & RUNNING);
 }
 
 - (BOOL)isValid
 {
-    return (_valid & 1);
+    return (_valid & VALID);
 }
 
 @end
