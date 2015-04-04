@@ -1,6 +1,7 @@
 ![](https://raw.githubusercontent.com/Olympus-Library/Resources/master/chronos-header.png)
 
 # Overview
+[![Build Status](https://travis-ci.org/Olympus-Library/Chronos.svg)](https://travis-ci.org/Olympus-Library/Chronos)
 [![Version](http://img.shields.io/cocoapods/v/Chronos.svg)](http://cocoapods.org/?q=Chronos)
 [![Platform](http://img.shields.io/cocoapods/p/Chronos.svg)]()
 [![License](http://img.shields.io/cocoapods/l/Chronos.svg)](https://github.com/Olympus-Library/Chronos/blob/master/LICENSE)
