@@ -19,6 +19,14 @@ Chronos is available through Cocoa Pods. Add the following to your Podfile:
 pod 'Chronos'
 ```
 
+###### Note: 
+
+If you see the following error message:
+
+> [!] Unable to find a specification for `Chronos`
+
+Due to a bug in libgit2, your local copy of the Cocoapods Specs repository may need to removed and re-cloned. More information on why and how to do this is available on the [Cocoapods blog](http://blog.cocoapods.org/Repairing-Our-Broken-Specs-Repository/).
+
 ### Using a Dispatch Timer
 
 ```objective-c
