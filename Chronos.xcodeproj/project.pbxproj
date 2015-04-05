@@ -12,6 +12,11 @@
 		DD8A030E1ACFCFD6003C1CDF /* CHRDispatchTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8A030C1ACFCFD6003C1CDF /* CHRDispatchTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD8A030F1ACFCFD6003C1CDF /* CHRDispatchTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8A030D1ACFCFD6003C1CDF /* CHRDispatchTimer.m */; };
 		DD9ED43F1AD09B0D0068D45E /* Chronos.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD5323681AC8DECA00AF0868 /* Chronos.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DD9ED4C41AD118050068D45E /* Chronos.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DD9ED4A91AD117440068D45E /* Chronos.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DD9ED4C51AD118180068D45E /* CHRDispatchTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8A030A1ACFCC9E003C1CDF /* CHRDispatchTimerTests.m */; };
+		DD9ED4C61AD1185E0068D45E /* CHRDispatchTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8A030D1ACFCFD6003C1CDF /* CHRDispatchTimer.m */; };
+		DD9ED4C71AD118690068D45E /* Chronos.h in Headers */ = {isa = PBXBuildFile; fileRef = DD53236D1AC8DECA00AF0868 /* Chronos.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD9ED4C81AD118690068D45E /* CHRDispatchTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8A030C1ACFCFD6003C1CDF /* CHRDispatchTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -21,6 +26,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = DD5323671AC8DECA00AF0868;
 			remoteInfo = Chronos;
+		};
+		DD9ED4B51AD117440068D45E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD53235F1AC8DECA00AF0868 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD9ED4A81AD117440068D45E;
+			remoteInfo = "Chronos OSX";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -35,6 +47,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD9ED4C21AD117C90068D45E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DD9ED4C41AD118050068D45E /* Chronos.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +68,8 @@
 		DD8A030A1ACFCC9E003C1CDF /* CHRDispatchTimerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHRDispatchTimerTests.m; sourceTree = "<group>"; };
 		DD8A030C1ACFCFD6003C1CDF /* CHRDispatchTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHRDispatchTimer.h; path = Classes/CHRDispatchTimer.h; sourceTree = "<group>"; };
 		DD8A030D1ACFCFD6003C1CDF /* CHRDispatchTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHRDispatchTimer.m; path = Classes/CHRDispatchTimer.m; sourceTree = "<group>"; };
+		DD9ED4A91AD117440068D45E /* Chronos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chronos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD9ED4B31AD117440068D45E /* Chronos OSX Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chronos OSX Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +81,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DD5323701AC8DECA00AF0868 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD9ED4A51AD117440068D45E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD9ED4B01AD117440068D45E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -80,6 +118,8 @@
 			children = (
 				DD5323681AC8DECA00AF0868 /* Chronos.framework */,
 				DD5323731AC8DECA00AF0868 /* ChronosTests.xctest */,
+				DD9ED4A91AD117440068D45E /* Chronos.framework */,
+				DD9ED4B31AD117440068D45E /* Chronos OSX Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -140,12 +180,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD9ED4A61AD117440068D45E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD9ED4C71AD118690068D45E /* Chronos.h in Headers */,
+				DD9ED4C81AD118690068D45E /* CHRDispatchTimer.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		DD5323671AC8DECA00AF0868 /* Chronos */ = {
+		DD5323671AC8DECA00AF0868 /* Chronos iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD53237E1AC8DECA00AF0868 /* Build configuration list for PBXNativeTarget "Chronos" */;
+			buildConfigurationList = DD53237E1AC8DECA00AF0868 /* Build configuration list for PBXNativeTarget "Chronos iOS" */;
 			buildPhases = (
 				DD5323631AC8DECA00AF0868 /* Sources */,
 				DD5323641AC8DECA00AF0868 /* Frameworks */,
@@ -156,14 +205,14 @@
 			);
 			dependencies = (
 			);
-			name = Chronos;
+			name = "Chronos iOS";
 			productName = Chronos;
 			productReference = DD5323681AC8DECA00AF0868 /* Chronos.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DD5323721AC8DECA00AF0868 /* ChronosTests */ = {
+		DD5323721AC8DECA00AF0868 /* Chronos iOS Tests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DD5323811AC8DECA00AF0868 /* Build configuration list for PBXNativeTarget "ChronosTests" */;
+			buildConfigurationList = DD5323811AC8DECA00AF0868 /* Build configuration list for PBXNativeTarget "Chronos iOS Tests" */;
 			buildPhases = (
 				DD53236F1AC8DECA00AF0868 /* Sources */,
 				DD5323701AC8DECA00AF0868 /* Frameworks */,
@@ -175,9 +224,46 @@
 			dependencies = (
 				DD5323761AC8DECA00AF0868 /* PBXTargetDependency */,
 			);
-			name = ChronosTests;
+			name = "Chronos iOS Tests";
 			productName = ChronosTests;
 			productReference = DD5323731AC8DECA00AF0868 /* ChronosTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		DD9ED4A81AD117440068D45E /* Chronos OSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD9ED4BC1AD117440068D45E /* Build configuration list for PBXNativeTarget "Chronos OSX" */;
+			buildPhases = (
+				DD9ED4A41AD117440068D45E /* Sources */,
+				DD9ED4A51AD117440068D45E /* Frameworks */,
+				DD9ED4A61AD117440068D45E /* Headers */,
+				DD9ED4A71AD117440068D45E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Chronos OSX";
+			productName = "Chronos OSX";
+			productReference = DD9ED4A91AD117440068D45E /* Chronos.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		DD9ED4B21AD117440068D45E /* Chronos OSX Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD9ED4BF1AD117440068D45E /* Build configuration list for PBXNativeTarget "Chronos OSX Tests" */;
+			buildPhases = (
+				DD9ED4AF1AD117440068D45E /* Sources */,
+				DD9ED4B01AD117440068D45E /* Frameworks */,
+				DD9ED4B11AD117440068D45E /* Resources */,
+				DD9ED4C21AD117C90068D45E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD9ED4B61AD117440068D45E /* PBXTargetDependency */,
+			);
+			name = "Chronos OSX Tests";
+			productName = "Chronos OSXTests";
+			productReference = DD9ED4B31AD117440068D45E /* Chronos OSX Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -195,6 +281,12 @@
 					DD5323721AC8DECA00AF0868 = {
 						CreatedOnToolsVersion = 6.2;
 					};
+					DD9ED4A81AD117440068D45E = {
+						CreatedOnToolsVersion = 6.2;
+					};
+					DD9ED4B21AD117440068D45E = {
+						CreatedOnToolsVersion = 6.2;
+					};
 				};
 			};
 			buildConfigurationList = DD5323621AC8DECA00AF0868 /* Build configuration list for PBXProject "Chronos" */;
@@ -209,8 +301,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DD5323671AC8DECA00AF0868 /* Chronos */,
-				DD5323721AC8DECA00AF0868 /* ChronosTests */,
+				DD5323671AC8DECA00AF0868 /* Chronos iOS */,
+				DD9ED4A81AD117440068D45E /* Chronos OSX */,
+				DD5323721AC8DECA00AF0868 /* Chronos iOS Tests */,
+				DD9ED4B21AD117440068D45E /* Chronos OSX Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -224,6 +318,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		DD5323711AC8DECA00AF0868 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD9ED4A71AD117440068D45E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD9ED4B11AD117440068D45E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -249,13 +357,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DD9ED4A41AD117440068D45E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD9ED4C61AD1185E0068D45E /* CHRDispatchTimer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD9ED4AF1AD117440068D45E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD9ED4C51AD118180068D45E /* CHRDispatchTimerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		DD5323761AC8DECA00AF0868 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DD5323671AC8DECA00AF0868 /* Chronos */;
+			target = DD5323671AC8DECA00AF0868 /* Chronos iOS */;
 			targetProxy = DD5323751AC8DECA00AF0868 /* PBXContainerItemProxy */;
+		};
+		DD9ED4B61AD117440068D45E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD9ED4A81AD117440068D45E /* Chronos OSX */;
+			targetProxy = DD9ED4B51AD117440068D45E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -357,7 +486,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Chronos;
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -375,7 +504,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Chronos;
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -412,6 +541,86 @@
 			};
 			name = Release;
 		};
+		DD9ED4BD1AD117440068D45E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = Chronos/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = Chronos;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		DD9ED4BE1AD117440068D45E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Chronos/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = Chronos;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		DD9ED4C01AD117440068D45E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ChronosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DD9ED4C11AD117440068D45E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ChronosTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -424,7 +633,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD53237E1AC8DECA00AF0868 /* Build configuration list for PBXNativeTarget "Chronos" */ = {
+		DD53237E1AC8DECA00AF0868 /* Build configuration list for PBXNativeTarget "Chronos iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD53237F1AC8DECA00AF0868 /* Debug */,
@@ -433,7 +642,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DD5323811AC8DECA00AF0868 /* Build configuration list for PBXNativeTarget "ChronosTests" */ = {
+		DD5323811AC8DECA00AF0868 /* Build configuration list for PBXNativeTarget "Chronos iOS Tests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DD5323821AC8DECA00AF0868 /* Debug */,
@@ -441,6 +650,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		DD9ED4BC1AD117440068D45E /* Build configuration list for PBXNativeTarget "Chronos OSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD9ED4BD1AD117440068D45E /* Debug */,
+				DD9ED4BE1AD117440068D45E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		DD9ED4BF1AD117440068D45E /* Build configuration list for PBXNativeTarget "Chronos OSX Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD9ED4C01AD117440068D45E /* Debug */,
+				DD9ED4C11AD117440068D45E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
