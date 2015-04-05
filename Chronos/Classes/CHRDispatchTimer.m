@@ -160,7 +160,7 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 {
     [self validate];
     
-    if (OSAtomicCompareAndSwap32(STOPPED, RUNNING, &_running)) {
+    if (OSAtomicCompareAndSwap32Barrier(STOPPED, RUNNING, &_running)) {
         dispatch_source_set_timer(_timer, startTime(_interval, now), _interval * NSEC_PER_SEC, leeway(_interval));
         dispatch_resume(_timer);
     }
@@ -170,14 +170,14 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 {
     [self validate];
     
-    if (OSAtomicCompareAndSwap32(RUNNING, STOPPED, &_running)) {
+    if (OSAtomicCompareAndSwap32Barrier(RUNNING, STOPPED, &_running)) {
         dispatch_suspend(_timer);
     }
 }
 
 - (void)cancel
 {
-    if (OSAtomicCompareAndSwap32(VALID, INVALID, &_valid)) {
+    if (OSAtomicCompareAndSwap32Barrier(VALID, INVALID, &_valid)) {
         _running = STOPPED;
         dispatch_source_cancel(_timer);
     }
