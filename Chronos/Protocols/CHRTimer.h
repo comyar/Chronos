@@ -39,7 +39,7 @@
 // @name Using a Timer
 // -----
 
-#pragma mark Using a Dispatch Timer
+#pragma mark Using a Timer
 
 /**
  Starts the timer.
