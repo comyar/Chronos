@@ -17,6 +17,8 @@
 		DD9ED4C61AD1185E0068D45E /* CHRDispatchTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DD8A030D1ACFCFD6003C1CDF /* CHRDispatchTimer.m */; };
 		DD9ED4C71AD118690068D45E /* Chronos.h in Headers */ = {isa = PBXBuildFile; fileRef = DD53236D1AC8DECA00AF0868 /* Chronos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD9ED4C81AD118690068D45E /* CHRDispatchTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8A030C1ACFCFD6003C1CDF /* CHRDispatchTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDB8D1EA1AD9027D0056B178 /* CHRTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1E81AD900AB0056B178 /* CHRTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDB8D1EB1AD902850056B178 /* CHRTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1E81AD900AB0056B178 /* CHRTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,13 +65,14 @@
 		DD5323681AC8DECA00AF0868 /* Chronos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chronos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD53236C1AC8DECA00AF0868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD53236D1AC8DECA00AF0868 /* Chronos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Chronos.h; sourceTree = "<group>"; };
-		DD5323731AC8DECA00AF0868 /* ChronosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChronosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD5323731AC8DECA00AF0868 /* ChronosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ChronosTests.xctest; path = "Chronos iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD5323791AC8DECA00AF0868 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD8A030A1ACFCC9E003C1CDF /* CHRDispatchTimerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHRDispatchTimerTests.m; sourceTree = "<group>"; };
 		DD8A030C1ACFCFD6003C1CDF /* CHRDispatchTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CHRDispatchTimer.h; path = Classes/CHRDispatchTimer.h; sourceTree = "<group>"; };
 		DD8A030D1ACFCFD6003C1CDF /* CHRDispatchTimer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CHRDispatchTimer.m; path = Classes/CHRDispatchTimer.m; sourceTree = "<group>"; };
 		DD9ED4A91AD117440068D45E /* Chronos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chronos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9ED4B31AD117440068D45E /* Chronos OSX Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chronos OSX Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDB8D1E81AD900AB0056B178 /* CHRTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CHRTimer.h; path = Protocols/CHRTimer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				DD53236D1AC8DECA00AF0868 /* Chronos.h */,
+				DDB8D1E91AD900AE0056B178 /* Protocols */,
 				DD5323841AC8DED700AF0868 /* Classes */,
 				DD53236B1AC8DECA00AF0868 /* Supporting Files */,
 			);
@@ -168,6 +172,14 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		DDB8D1E91AD900AE0056B178 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DDB8D1E81AD900AB0056B178 /* CHRTimer.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -177,6 +189,7 @@
 			files = (
 				DD8A030E1ACFCFD6003C1CDF /* CHRDispatchTimer.h in Headers */,
 				DD53236E1AC8DECA00AF0868 /* Chronos.h in Headers */,
+				DDB8D1EA1AD9027D0056B178 /* CHRTimer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +199,7 @@
 			files = (
 				DD9ED4C71AD118690068D45E /* Chronos.h in Headers */,
 				DD9ED4C81AD118690068D45E /* CHRDispatchTimer.h in Headers */,
+				DDB8D1EB1AD902850056B178 /* CHRTimer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -658,6 +672,7 @@
 				DD9ED4BE1AD117440068D45E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD9ED4BF1AD117440068D45E /* Build configuration list for PBXNativeTarget "Chronos OSX Tests" */ = {
 			isa = XCConfigurationList;
@@ -666,6 +681,7 @@
 				DD9ED4C11AD117440068D45E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

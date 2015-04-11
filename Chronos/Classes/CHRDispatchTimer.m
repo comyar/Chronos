@@ -70,7 +70,8 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 #pragma mark - CHRDispatchTimer Implementation
 
 @implementation CHRDispatchTimer
-@synthesize invocations = _invocations;
+@synthesize invocations     = _invocations;
+@synthesize executionQueue  = _executionQueue;
 
 - (void)dealloc
 {

@@ -1,5 +1,5 @@
 //
-//  Chronos.h
+//  CHRTimer.h
 //  Chronos
 //
 //  Copyright (c) 2015 Comyar Zaheri. All rights reserved.
@@ -29,18 +29,66 @@
 @import Foundation;
 
 
-#pragma mark - Framework
+#pragma mark - CHRTimer Protocol
 
-// Project version number for Chronos.
-FOUNDATION_EXPORT double ChronosVersionNumber;
+/**
+ */
+@protocol CHRTimer <NSObject>
 
-// Project version string for Chronos.
-FOUNDATION_EXPORT const unsigned char ChronosVersionString[];
+// -----
+// @name Using a Timer
+// -----
 
-// Protocols
-#import <Chronos/CHRTimer.h>
+#pragma mark Using a Dispatch Timer
 
-// Classes
-#import <Chronos/CHRDispatchTimer.h>
+/**
+ Starts the timer.
+ 
+ @param     now
+            YES if the timer should start immediately or interval seconds from
+            the current time.
+ */
+- (void)start:(BOOL)now;
 
+/**
+ Stops the timer and does not reset the invocation count.
+ */
+- (void)pause;
 
+/**
+ Permanently cancels the timer.
+ 
+ Attempting to send a start or pause message to a canceled timer is considered
+ an error, and will result in an exception being thrown.
+ */
+- (void)cancel;
+
+// -----
+// @name Properties
+// -----
+
+#pragma mark Properties
+
+/**
+ The receiver's execution queue.
+ */
+@property (readonly) dispatch_queue_t executionQueue;
+
+/**
+ The number of times the timer has fired.
+ */
+@property (atomic, readonly) NSUInteger invocations;
+
+/**
+ YES, if the timer is valid.
+ 
+ A timer is considered invalid if it has received the cancel message.
+ */
+@property (atomic, readonly, getter=isValid) BOOL valid;
+
+/**
+ YES, if the timer is currently running.
+ */
+@property (atomic, readonly, getter=isRunning) BOOL running;
+
+@end

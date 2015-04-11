@@ -27,6 +27,7 @@
 #pragma mark - Imports
 
 @import Foundation;
+#import "CHRTimer.h"
 #import <libkern/OSAtomic.h>
 
 
@@ -42,14 +43,6 @@
  initialization.
  */
 typedef void (^CHRDispatchTimerInitFailureBlock)(void);
-
-/**
- The block to execute when the timer is canceled.
- 
- @param     timer
-            The timer that fired.
- */
-typedef void (^CHRDispatchTimerCancellationBlock)(__weak CHRDispatchTimer *timer);
 
 /**
  The block to execute every time the timer is fired.
@@ -73,7 +66,7 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
  actual time at which a timer fires can potentially be a significant period of 
  time after the scheduled firing time.
  */
-@interface CHRDispatchTimer : NSObject
+@interface CHRDispatchTimer : NSObject <CHRTimer>
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -179,34 +172,6 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
                            failureBlock:(CHRDispatchTimerInitFailureBlock)failureBlock;
 
 // -----
-// @name Using a Dispatch Timer
-// -----
-
-#pragma mark Using a Dispatch Timer
-
-/**
- Starts the timer and begins executing the executionBlock at the set interval.
- 
- @param     now
-            YES if the timer should start immediately or interval seconds from
-            the current time.
- */
-- (void)start:(BOOL)now;
-
-/**
- Stops the timer and does not reset the invocation count.
- */
-- (void)pause;
-
-/**
- Permanently cancels the timer.
- 
- Attempting to send a start or pause message to a canceled timer is considered
- an error, and will result in an exception being thrown.
- */
-- (void)cancel;
-
-// -----
 // @name Properties
 // -----
 
@@ -218,30 +183,8 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
 @property (readonly) NSTimeInterval interval;
 
 /**
- The receiver's execution queue.
- */
-@property (readonly) dispatch_queue_t executionQueue;
-
-/**
  The receiver's execution block.
  */
 @property (readonly, copy) CHRDispatchTimerExecutionBlock executionBlock;
-
-/**
- The number of times the timer has fired.
- */
-@property (atomic, readonly) NSUInteger invocations;
-
-/**
- YES, if the timer is valid.
- 
- A timer is considered invalid if it has received the cancel message.
- */
-@property (atomic, readonly, getter=isValid) BOOL valid;
-
-/**
- YES, if the timer is currently running.
- */
-@property (atomic, readonly, getter=isRunning) BOOL running;
 
 @end
