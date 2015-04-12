@@ -1,5 +1,5 @@
 //
-//  CHRRepeatingTimer.h
+//  CHRTimerInternal.h
 //  Chronos
 //
 //  Copyright (c) 2015 Comyar Zaheri. All rights reserved.
@@ -24,46 +24,36 @@
 //
 
 
-#pragma mark - Imports
-
-#import "CHRTimer.h"
-
-
-#pragma mark - Forward Declarations
-
-@protocol CHRRepeatingTimer;
+#ifndef Chronos_CHRTimerInterval
+#define Chronos_CHRTimerInterval
 
 
 #pragma mark - Type Definitions
 
-/**
- The block to execute every time the timer is fired.
- 
- @param     timer
-            The timer that fired.
- @param     invocation
-            The current invocation number. The first invocation is 0.
- */
-typedef void (^CHRRepeatingTimerExecutionBlock)(__weak id<CHRRepeatingTimer> timer, NSUInteger invocation);
+typedef NS_ENUM(int32_t, CHRTimerState) {
+    CHRTimerStateStopped    = 0,
+    CHRTimerStateRunning    = 1,
+    CHRTimerStateValid      = 2,
+    CHRTimerStateInvalid    = 3
+};
 
 
-#pragma mark - CHRRepeatingTimer Protocol
+#pragma mark - Constants and Functions
 
 /**
- The CHRRepeatingTimer protocol defines methods and properties for a timer that
- repeatedly executes after a constant or variable time interval.
+ Computes the leeway for the given interval. Currently set to 5% of the total
+ interval time.
  */
-@protocol CHRRepeatingTimer <CHRTimer>
-
-// -----
-// @name Properties
-// -----
-
-#pragma mark Properties
+static inline uint64_t chr_leeway(NSTimeInterval interval) {
+    return 0.05 * interval * NSEC_PER_SEC;
+}
 
 /**
- The receiver's execution block.
+ Computes the start time of the timer, given the interval and whether the timer
+ should start immediately.
  */
-@property (readonly, copy) CHRRepeatingTimerExecutionBlock executionBlock;
+static inline dispatch_time_t chr_startTime(NSTimeInterval interval, BOOL now) {
+    return dispatch_time(DISPATCH_TIME_NOW, (now)? 0 : interval * NSEC_PER_SEC);
+}
 
-@end
+#endif

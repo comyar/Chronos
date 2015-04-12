@@ -27,31 +27,12 @@
 #pragma mark - Imports
 
 #import "CHRDispatchTimer.h"
+#import "CHRTimerInternal.h"
 
 
 #pragma mark - Constants and Functions
 
-static const int STOPPED    = 0;
-static const int RUNNING    = 1;
-static const int INVALID    = 0;
-static const int VALID      = 1;
 static NSString * const CHRDispatchTimerExecutionQueueNamePrefix = @"com.chronus.CHRDispatchTimer";
-
-/**
- Computes the leeway for the given interval. Currently set to 5% of the total
- interval time.
- */
-static inline uint64_t leeway(NSTimeInterval interval) {
-    return 0.05 * interval * NSEC_PER_SEC;
-}
-
-/**
- Computes the start time of the timer, given the interval and whether the timer
- should start immediately.
- */
-static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
-    return dispatch_time(DISPATCH_TIME_NOW, (now)? 0 : interval * NSEC_PER_SEC);
-}
 
 
 #pragma mark - CHRDispatchTimer Class Extension
@@ -70,8 +51,8 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 #pragma mark - CHRDispatchTimer Implementation
 
 @implementation CHRDispatchTimer
-@synthesize invocations     = _invocations;
 @synthesize executionQueue  = _executionQueue;
+@synthesize executionBlock  = _executionBlock;
 
 - (void)dealloc
 {
@@ -116,13 +97,15 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
             }
             return nil;
         }
-        _valid = VALID;
+        _valid = CHRTimerStateValid;
         _interval = interval;
         _executionBlock = [executionBlock copy];
         __weak CHRDispatchTimer *weak = self;
         dispatch_source_set_event_handler(_timer, ^{
-            _executionBlock(weak, _invocations);
-            ++_invocations;
+            CHRDispatchTimer *strong = weak;
+            if (strong) {
+                strong.executionBlock(weak, strong->_invocations++);
+            }
         });
     }
     return self;
@@ -161,8 +144,8 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 {
     [self validate];
     
-    if (OSAtomicCompareAndSwap32Barrier(STOPPED, RUNNING, &_running)) {
-        dispatch_source_set_timer(_timer, startTime(_interval, now), _interval * NSEC_PER_SEC, leeway(_interval));
+    if (OSAtomicCompareAndSwap32Barrier(CHRTimerStateStopped, CHRTimerStateRunning, &_running)) {
+        dispatch_source_set_timer(_timer, chr_startTime(_interval, now), _interval * NSEC_PER_SEC, chr_leeway(_interval));
         dispatch_resume(_timer);
     }
 }
@@ -171,24 +154,27 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 {
     [self validate];
     
-    if (OSAtomicCompareAndSwap32Barrier(RUNNING, STOPPED, &_running)) {
+    if (OSAtomicCompareAndSwap32Barrier(CHRTimerStateRunning, CHRTimerStateStopped, &_running)) {
         dispatch_suspend(_timer);
     }
 }
 
 - (void)cancel
 {
-    if (OSAtomicCompareAndSwap32Barrier(VALID, INVALID, &_valid)) {
-        _running = STOPPED;
+    if (OSAtomicCompareAndSwap32Barrier(CHRTimerStateValid, CHRTimerStateInvalid, &_valid)) {
+        if (_running == CHRTimerStateStopped) {
+            dispatch_resume(_timer);
+        }
+        _running = CHRTimerStateStopped;
         dispatch_source_cancel(_timer);
     }
 }
 
 - (void)validate
 {
-    if (!_valid) {
+    if (_valid != CHRTimerStateValid) {
         @throw [NSException exceptionWithName:NSInternalInconsistencyException
-                                       reason:@"Attempting to use invalid CHRDispatchTimer"
+                                       reason:@"Attempting to use invalid CHRDispatchTimer."
                                      userInfo:nil];
     }
 }
@@ -197,12 +183,17 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 
 - (BOOL)isRunning
 {
-    return (_running & RUNNING);
+    return _running == CHRTimerStateRunning;
 }
 
 - (BOOL)isValid
 {
-    return (_valid & VALID);
+    return _valid == CHRTimerStateValid;
+}
+
+- (NSUInteger)invocations
+{
+    return _invocations;
 }
 
 @end

@@ -41,6 +41,10 @@ typedef void (^CHRTimerInitFailureBlock)(void);
 
 /**
  The CHRTimer protocol declares methods and properties for a timer. 
+ 
+ A timer has limited accuracy when determining the exact moment to fire; the
+ actual time at which a timer fires can potentially be a significant period of
+ time after the scheduled firing time.
  */
 @protocol CHRTimer <NSObject>
 

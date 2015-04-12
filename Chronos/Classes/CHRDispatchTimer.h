@@ -158,9 +158,4 @@
  */
 @property (readonly) NSTimeInterval interval;
 
-/**
- The receiver's execution block.
- */
-@property (readonly, copy) CHRRepeatingTimerExecutionBlock executionBlock;
-
 @end

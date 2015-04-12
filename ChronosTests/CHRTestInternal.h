@@ -1,5 +1,5 @@
 //
-//  CHRRepeatingTimer.h
+//  CHRTimerTestInternal.h
 //  Chronos
 //
 //  Copyright (c) 2015 Comyar Zaheri. All rights reserved.
@@ -24,46 +24,15 @@
 //
 
 
-#pragma mark - Imports
-
-#import "CHRTimer.h"
-
-
-#pragma mark - Forward Declarations
-
-@protocol CHRRepeatingTimer;
+#ifndef Chronos_CHRTestInternal
+#define Chronos_CHRTestInternal
 
 
-#pragma mark - Type Definitions
+#pragma mark - Constants and Functions
 
-/**
- The block to execute every time the timer is fired.
- 
- @param     timer
-            The timer that fired.
- @param     invocation
-            The current invocation number. The first invocation is 0.
- */
-typedef void (^CHRRepeatingTimerExecutionBlock)(__weak id<CHRRepeatingTimer> timer, NSUInteger invocation);
+static NSTimeInterval CHRDefaultAsyncTestTimeout = 10.0;
+static inline dispatch_time_t chr_timeout(NSTimeInterval seconds) {
+    return dispatch_time(DISPATCH_TIME_NOW, (int64_t) seconds * NSEC_PER_SEC);
+}
 
-
-#pragma mark - CHRRepeatingTimer Protocol
-
-/**
- The CHRRepeatingTimer protocol defines methods and properties for a timer that
- repeatedly executes after a constant or variable time interval.
- */
-@protocol CHRRepeatingTimer <CHRTimer>
-
-// -----
-// @name Properties
-// -----
-
-#pragma mark Properties
-
-/**
- The receiver's execution block.
- */
-@property (readonly, copy) CHRRepeatingTimerExecutionBlock executionBlock;
-
-@end
+#endif
