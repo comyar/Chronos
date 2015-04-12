@@ -21,12 +21,14 @@
 		DDB8D1EB1AD902850056B178 /* CHRTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1E81AD900AB0056B178 /* CHRTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDB8D1ED1AD9F3650056B178 /* CHRRepeatingTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1EC1AD9F0140056B178 /* CHRRepeatingTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDB8D1EE1AD9F36C0056B178 /* CHRRepeatingTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1EC1AD9F0140056B178 /* CHRRepeatingTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DDB8D1F11AD9F3D10056B178 /* CHRVariableTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1EF1AD9F3D10056B178 /* CHRVariableTimer.h */; settings = {ATTRIBUTES = (Private, ); }; };
-		DDB8D1F21AD9F3D10056B178 /* CHRVariableTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1EF1AD9F3D10056B178 /* CHRVariableTimer.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DDB8D1F11AD9F3D10056B178 /* CHRVariableTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1EF1AD9F3D10056B178 /* CHRVariableTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDB8D1F21AD9F3D10056B178 /* CHRVariableTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1EF1AD9F3D10056B178 /* CHRVariableTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDB8D1F31AD9F3D10056B178 /* CHRVariableTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB8D1F01AD9F3D10056B178 /* CHRVariableTimer.m */; };
 		DDB8D1F41AD9F3D10056B178 /* CHRVariableTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB8D1F01AD9F3D10056B178 /* CHRVariableTimer.m */; };
 		DDB8D1FD1ADA04350056B178 /* CHRVariableTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB8D1F81ADA03D20056B178 /* CHRVariableTimerTests.m */; };
 		DDB8D1FE1ADA04350056B178 /* CHRVariableTimerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB8D1F81ADA03D20056B178 /* CHRVariableTimerTests.m */; };
+		DDFBB86B1ADA57F9008B711C /* CHRTimerInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1F61AD9FCAE0056B178 /* CHRTimerInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		DDFBB86C1ADA5801008B711C /* CHRTimerInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1F61AD9FCAE0056B178 /* CHRTimerInternal.h */; settings = {ATTRIBUTES = (Private, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +222,7 @@
 				DDB8D1EA1AD9027D0056B178 /* CHRTimer.h in Headers */,
 				DDB8D1F11AD9F3D10056B178 /* CHRVariableTimer.h in Headers */,
 				DDB8D1EE1AD9F36C0056B178 /* CHRRepeatingTimer.h in Headers */,
+				DDFBB86C1ADA5801008B711C /* CHRTimerInternal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +235,7 @@
 				DDB8D1EB1AD902850056B178 /* CHRTimer.h in Headers */,
 				DDB8D1F21AD9F3D10056B178 /* CHRVariableTimer.h in Headers */,
 				DDB8D1ED1AD9F3650056B178 /* CHRRepeatingTimer.h in Headers */,
+				DDFBB86B1ADA57F9008B711C /* CHRTimerInternal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

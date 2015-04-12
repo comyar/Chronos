@@ -43,5 +43,6 @@ FOUNDATION_EXPORT const unsigned char ChronosVersionString[];
 
 // Classes
 #import <Chronos/CHRDispatchTimer.h>
+#import <Chronos/CHRVariableTimer.h>
 
 
