@@ -87,11 +87,6 @@ typedef void (^CHRTimerInitFailureBlock)(void);
 @property (readonly) dispatch_queue_t executionQueue;
 
 /**
- The number of times the timer has fired.
- */
-@property (atomic, readonly) NSUInteger invocations;
-
-/**
  YES, if the timer is valid.
  
  A timer is considered invalid if it has received the cancel message.

@@ -66,4 +66,9 @@ typedef void (^CHRRepeatingTimerExecutionBlock)(__weak id<CHRRepeatingTimer> tim
  */
 @property (readonly, copy) CHRRepeatingTimerExecutionBlock executionBlock;
 
+/**
+ The number of times the timer has fired.
+ */
+@property (atomic, readonly) NSUInteger invocations;
+
 @end

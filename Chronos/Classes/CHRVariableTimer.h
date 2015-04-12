@@ -50,9 +50,8 @@ typedef NSTimeInterval (^CHRVariableTimerIntervalProvider)(__weak CHRVariableTim
 #pragma mark - CHRVariableTimer Interface
 
 /**
- TODO
  The CHRVariableTimer class allows you to create Grand Central Dispatch-based
- timer objects...
+ timer objects that allow for variable intervals between successive firings.
  
  A timer has limited accuracy when determining the exact moment to fire; the
  actual time at which a timer fires can potentially be a significant period of
