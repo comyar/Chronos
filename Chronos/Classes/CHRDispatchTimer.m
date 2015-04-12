@@ -35,7 +35,7 @@ static const int STOPPED    = 0;
 static const int RUNNING    = 1;
 static const int INVALID    = 0;
 static const int VALID      = 1;
-static NSString * const CHRDispatchTimerExecutionQueueNamePrefix = @"com.chronus.execution";
+static NSString * const CHRDispatchTimerExecutionQueueNamePrefix = @"com.chronus.CHRDispatchTimer";
 
 /**
  Computes the leeway for the given interval. Currently set to 5% of the total
@@ -81,7 +81,7 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 #pragma mark Creating a Dispatch Timer
 
 - (instancetype)initWithInterval:(NSTimeInterval)interval
-                  executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                  executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
 {
     NSString *executionQueueName = [NSString stringWithFormat:@"%@.%p", CHRDispatchTimerExecutionQueueNamePrefix, self];
     dispatch_queue_t executionQueue = dispatch_queue_create([executionQueueName UTF8String], DISPATCH_QUEUE_SERIAL);
@@ -91,7 +91,7 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 }
 
 - (instancetype)initWithInterval:(NSTimeInterval)interval
-                  executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                  executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
                   executionQueue:(dispatch_queue_t)executionQueue
 {
     return [self initWithInterval:interval
@@ -101,9 +101,9 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 }
 
 - (instancetype)initWithInterval:(NSTimeInterval)interval
-                  executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                  executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
                   executionQueue:(dispatch_queue_t)executionQueue
-                    failureBlock:(CHRDispatchTimerInitFailureBlock)failureBlock
+                    failureBlock:(CHRTimerInitFailureBlock)failureBlock
 {
     if (self = [super init]) {
         _executionQueue = executionQueue;
@@ -129,14 +129,14 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 }
 
 + (CHRDispatchTimer *)timerWithInterval:(NSTimeInterval)interval
-                         executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                         executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
 {
     return [[CHRDispatchTimer alloc]initWithInterval:interval
                                       executionBlock:executionBlock];
 }
 
 + (CHRDispatchTimer *)timerWithInterval:(NSTimeInterval)interval
-                         executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                         executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
                          executionQueue:(dispatch_queue_t)executionQueue
 {
     return [[CHRDispatchTimer alloc]initWithInterval:interval
@@ -145,9 +145,9 @@ static inline dispatch_time_t startTime(NSTimeInterval interval, BOOL now) {
 }
 
 + (CHRDispatchTimer *)timerWithInterval:(NSTimeInterval)interval
-                         executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                         executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
                          executionQueue:(dispatch_queue_t)executionQueue
-                           failureBlock:(CHRDispatchTimerInitFailureBlock)failureBlock
+                           failureBlock:(CHRTimerInitFailureBlock)failureBlock
 {
     return [[CHRDispatchTimer alloc]initWithInterval:interval
                                       executionBlock:executionBlock

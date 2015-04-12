@@ -29,9 +29,18 @@
 @import Foundation;
 
 
+#pragma mark - Type Definitions
+
+/**
+ The block to execute if the timer fails to initialize.
+ */
+typedef void (^CHRTimerInitFailureBlock)(void);
+
+
 #pragma mark - CHRTimer Protocol
 
 /**
+ The CHRTimer protocol declares methods and properties for a timer. 
  */
 @protocol CHRTimer <NSObject>
 
@@ -45,8 +54,7 @@
  Starts the timer.
  
  @param     now
-            YES if the timer should start immediately or interval seconds from
-            the current time.
+            YES if the timer should start immediately.
  */
 - (void)start:(BOOL)now;
 

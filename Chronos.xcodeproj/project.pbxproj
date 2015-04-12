@@ -19,6 +19,8 @@
 		DD9ED4C81AD118690068D45E /* CHRDispatchTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DD8A030C1ACFCFD6003C1CDF /* CHRDispatchTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDB8D1EA1AD9027D0056B178 /* CHRTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1E81AD900AB0056B178 /* CHRTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DDB8D1EB1AD902850056B178 /* CHRTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1E81AD900AB0056B178 /* CHRTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDB8D1ED1AD9F3650056B178 /* CHRRepeatingTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1EC1AD9F0140056B178 /* CHRRepeatingTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DDB8D1EE1AD9F36C0056B178 /* CHRRepeatingTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = DDB8D1EC1AD9F0140056B178 /* CHRRepeatingTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,7 @@
 		DD9ED4A91AD117440068D45E /* Chronos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Chronos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD9ED4B31AD117440068D45E /* Chronos OSX Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Chronos OSX Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDB8D1E81AD900AB0056B178 /* CHRTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CHRTimer.h; path = Protocols/CHRTimer.h; sourceTree = "<group>"; };
+		DDB8D1EC1AD9F0140056B178 /* CHRRepeatingTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CHRRepeatingTimer.h; path = Protocols/CHRRepeatingTimer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				DDB8D1E81AD900AB0056B178 /* CHRTimer.h */,
+				DDB8D1EC1AD9F0140056B178 /* CHRRepeatingTimer.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -190,6 +194,7 @@
 				DD8A030E1ACFCFD6003C1CDF /* CHRDispatchTimer.h in Headers */,
 				DD53236E1AC8DECA00AF0868 /* Chronos.h in Headers */,
 				DDB8D1EA1AD9027D0056B178 /* CHRTimer.h in Headers */,
+				DDB8D1EE1AD9F36C0056B178 /* CHRRepeatingTimer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +205,7 @@
 				DD9ED4C71AD118690068D45E /* Chronos.h in Headers */,
 				DD9ED4C81AD118690068D45E /* CHRDispatchTimer.h in Headers */,
 				DDB8D1EB1AD902850056B178 /* CHRTimer.h in Headers */,
+				DDB8D1ED1AD9F3650056B178 /* CHRRepeatingTimer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

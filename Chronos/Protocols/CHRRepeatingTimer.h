@@ -1,5 +1,5 @@
 //
-//  Chronos.h
+//  CHRRepeatingTimer.h
 //  Chronos
 //
 //  Copyright (c) 2015 Comyar Zaheri. All rights reserved.
@@ -26,22 +26,33 @@
 
 #pragma mark - Imports
 
-@import Foundation;
+#import "CHRTimer.h"
 
 
-#pragma mark - Framework
+#pragma mark - Forward Declarations
 
-// Project version number for Chronos.
-FOUNDATION_EXPORT double ChronosVersionNumber;
-
-// Project version string for Chronos.
-FOUNDATION_EXPORT const unsigned char ChronosVersionString[];
-
-// Protocols
-#import <Chronos/CHRTimer.h>
-#import <Chronos/CHRRepeatingTimer.h>
-
-// Classes
-#import <Chronos/CHRDispatchTimer.h>
+@protocol CHRRepeatingTimer;
 
 
+#pragma mark - Type Definitions
+
+/**
+ The block to execute every time the timer is fired.
+ 
+ @param     timer
+            The timer that fired.
+ @param     invocation
+            The current invocation number. The first invocation is 0.
+ */
+typedef void (^CHRRepeatingTimerExecutionBlock)(__weak id<CHRRepeatingTimer> timer, NSUInteger invocation);
+
+
+#pragma mark - CHRRepeatingTimer Protocol
+
+/**
+ The CHRRepeatingTimer protocol defines methods and properties for a timer that
+ repeatedly executes after a constant or variable time interval.
+ */
+@protocol CHRRepeatingTimer <CHRTimer>
+
+@end
