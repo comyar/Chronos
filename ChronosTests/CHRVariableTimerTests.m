@@ -94,6 +94,7 @@
         [intervalInvocations addObject:@(nextInvocation)];
         return 0.25;
     } executionBlock:^(__weak id<CHRRepeatingTimer> timer, NSUInteger invocation) {
+        XCTAssertEqual(invocation + 1, timer.invocations);
         [executedInvocations addObject:@(invocation)];
         if (invocation == 0) {
             [timer pause];
@@ -108,8 +109,7 @@
     
     dispatch_semaphore_wait(semaphore, chr_timeout(CHRDefaultAsyncTestTimeout));
     
-    XCTAssertEqual(4, [executedInvocations count]);
-    XCTAssertEqual(4, [intervalInvocations count]);
+    XCTAssertEqual(4, timer.invocations);
     
     NSArray *expectedExecutedInvocations = @[@(0), @(1), @(2), @(3)];
     NSArray *expectedIntervalInvocations = @[@(0), @(1), @(2), @(3)];
@@ -127,6 +127,7 @@
         [intervalInvocations addObject:@(nextInvocation)];
         return 0.25;
     } executionBlock:^(__weak id<CHRRepeatingTimer> timer, NSUInteger invocation) {
+        XCTAssertEqual(invocation + 1, timer.invocations);
         [executedInvocations addObject:@(invocation)];
         if (invocation == 0) {
             [timer pause];
@@ -141,11 +142,10 @@
     
     dispatch_semaphore_wait(semaphore, chr_timeout(CHRDefaultAsyncTestTimeout));
     
-    XCTAssertEqual(4, [executedInvocations count]);
-    XCTAssertEqual(4, [intervalInvocations count]);
+    XCTAssertEqual(4, timer.invocations);
     
     NSArray *expectedExecutedInvocations = @[@(0), @(1), @(2), @(3)];
-    NSArray *expectedIntervalInvocations = @[@(0), @(1), @(2), @(3)];
+    NSArray *expectedIntervalInvocations = @[@(0), @(2), @(3)];
     XCTAssertEqualObjects(expectedExecutedInvocations, executedInvocations);
     XCTAssertEqualObjects(expectedIntervalInvocations, intervalInvocations);
 }
@@ -160,6 +160,7 @@
         [intervalInvocations addObject:@(nextInvocation)];
         return 0.25;
     } executionBlock:^(__weak id<CHRRepeatingTimer> timer, NSUInteger invocation) {
+        XCTAssertEqual(invocation + 1, timer.invocations);
         [executedInvocations addObject:@(invocation)];
         if (invocation == 0) {
             [timer pause];
@@ -174,11 +175,10 @@
     
     dispatch_semaphore_wait(semaphore, chr_timeout(CHRDefaultAsyncTestTimeout));
     
-    XCTAssertEqual(4, [executedInvocations count]);
-    XCTAssertEqual(3, [intervalInvocations count]);
+    XCTAssertEqual(4, timer.invocations);
     
     NSArray *expectedExecutedInvocations = @[@(0), @(1), @(2), @(3)];
-    NSArray *expectedIntervalInvocations = @[@(1), @(2), @(3)];
+    NSArray *expectedIntervalInvocations = @[@(2), @(3)];
     XCTAssertEqualObjects(expectedExecutedInvocations, executedInvocations);
     XCTAssertEqualObjects(expectedIntervalInvocations, intervalInvocations);
 }

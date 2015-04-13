@@ -40,8 +40,9 @@ static NSString * const CHRVariableTimerExecutionQueueNamePrefix = @"com.chronus
 @interface CHRVariableTimer () {
     volatile int32_t    _running;
     volatile int32_t    _valid;
-    volatile NSUInteger _invocations;
-    volatile bool       _executionBlockDidScheduleTimer;
+    volatile NSUInteger _nextInvocation;
+    volatile NSUInteger _lastInvocation;
+    volatile bool       _executionBlockDidSetTimer;
     volatile bool       _executing;
 }
 
@@ -106,14 +107,14 @@ static NSString * const CHRVariableTimerExecutionQueueNamePrefix = @"com.chronus
         dispatch_source_set_event_handler(_timer, ^{
             CHRVariableTimer *strong = weak;
             if (strong) {
-                NSUInteger executionInvocation = strong->_invocations++;
                 strong->_executing = true;
-                strong->_executionBlock(weak, executionInvocation);
+                strong->_nextInvocation = strong->_lastInvocation + 1;
+                strong->_executionBlock(weak, strong->_lastInvocation++);
                 strong->_executing = false;
-                if (!strong->_executionBlockDidScheduleTimer) {
+                if (!strong->_executionBlockDidSetTimer) {
                     [strong schedule];
                 }
-                strong->_executionBlockDidScheduleTimer = false;
+                strong->_executionBlockDidSetTimer = false;
             }
         });
     }
@@ -159,6 +160,7 @@ static NSString * const CHRVariableTimerExecutionQueueNamePrefix = @"com.chronus
         } else {
             [self schedule];
         }
+        _executionBlockDidSetTimer = (_executing) ? true : false;
         dispatch_resume(self.timer);
     }
 }
@@ -180,7 +182,6 @@ static NSString * const CHRVariableTimerExecutionQueueNamePrefix = @"com.chronus
         }
         _running = CHRTimerStateStopped;
         dispatch_source_cancel(_timer);
-        
     }
 }
 
@@ -188,9 +189,8 @@ static NSString * const CHRVariableTimerExecutionQueueNamePrefix = @"com.chronus
 {
     if (self.isValid) {
         __weak CHRVariableTimer *weak = self;
-        NSTimeInterval interval = self.intervalProvider(weak, _invocations);
+        NSTimeInterval interval = self.intervalProvider(weak, _nextInvocation);
         dispatch_source_set_timer(_timer, chr_startTime(interval, NO), interval * NSEC_PER_SEC, chr_leeway(interval));
-        _executionBlockDidScheduleTimer = (_executing) ? true : false;
     }
 }
 
@@ -217,7 +217,7 @@ static NSString * const CHRVariableTimerExecutionQueueNamePrefix = @"com.chronus
 
 - (NSUInteger)invocations
 {
-    return _invocations;
+    return _lastInvocation;
 }
 
 @end

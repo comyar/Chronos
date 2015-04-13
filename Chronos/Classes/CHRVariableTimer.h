@@ -42,7 +42,7 @@
  The block that supplies the interval from the current time to the next firing
  of the timer. It is guaranteed that this block will only ever be called once
  for a given nextInvocation value and that the value of nextInvocation is
- monotonically increasing by a value of 1 between executions of this block.
+ monotonically increasing between executions of this block.
  */
 typedef NSTimeInterval (^CHRVariableTimerIntervalProvider)(__weak CHRVariableTimer *timer, NSUInteger nextInvocation);
 
