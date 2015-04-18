@@ -10,6 +10,11 @@ Chronos is a collection of useful Grand Central Dispatch utilities. If you have 
 
 Chronos is part of a larger library for iOS and OS X called [Olympus](https://github.com/Olympus-Library), which is currently under active development.
 
+## Utilities
+
+* **DispatchTimer** - A repeating timer that fires according to a static interval, e.g. "Fire every 5 seconds".
+* **VariableTimer** - A repeating timer that allows you to vary the interval between firings, e.g. "Fire according to the function `interval = 2 * count`." 
+
 # Usage 
 
 ### Quick Start
@@ -47,6 +52,8 @@ CHRDispatchTimer timer = [CHRDispatchTimer timerWithInterval:1.0
 [timer cancel];
 
 ```
+
+### Using a Variable Timer
 
 ```objective-c
 #import <Chronos/Chronos.h>
