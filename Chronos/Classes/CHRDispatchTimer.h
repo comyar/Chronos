@@ -27,39 +27,8 @@
 #pragma mark - Imports
 
 @import Foundation;
+#import "CHRRepeatingTimer.h"
 #import <libkern/OSAtomic.h>
-
-
-#pragma mark - Forward Declarations
-
-@class CHRDispatchTimer;
-
-
-#pragma mark - Type Definitions
-
-/**
- The block to execute if the timer fails to create a dispatch source during 
- initialization.
- */
-typedef void (^CHRDispatchTimerInitFailureBlock)(void);
-
-/**
- The block to execute when the timer is canceled.
- 
- @param     timer
-            The timer that fired.
- */
-typedef void (^CHRDispatchTimerCancellationBlock)(__weak CHRDispatchTimer *timer);
-
-/**
- The block to execute every time the timer is fired.
- 
- @param     timer   
-            The timer that fired.
- @param     invocation
-            The current invocation number. The first invocation is 0.
- */
-typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, NSUInteger invocation);
 
 
 #pragma mark - CHRDispatchTimer Interface
@@ -73,7 +42,7 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
  actual time at which a timer fires can potentially be a significant period of 
  time after the scheduled firing time.
  */
-@interface CHRDispatchTimer : NSObject
+@interface CHRDispatchTimer : NSObject <CHRRepeatingTimer>
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -95,7 +64,7 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
  @return    The newly initialized CHRDispatch object.
  */
 - (instancetype)initWithInterval:(NSTimeInterval)interval
-                  executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock;
+                  executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock;
 
 /**
  Initializes a CHRDispatchTimer object.
@@ -109,7 +78,7 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
  @return    The newly initialized CHRDispatch object.
  */
 - (instancetype)initWithInterval:(NSTimeInterval)interval
-                  executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                  executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
                   executionQueue:(dispatch_queue_t)executionQueue;
 
 /**
@@ -126,9 +95,9 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
  @return    The newly initialized CHRDispatch object.
  */
 - (instancetype)initWithInterval:(NSTimeInterval)interval
-                  executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                  executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
                   executionQueue:(dispatch_queue_t)executionQueue
-                    failureBlock:(CHRDispatchTimerInitFailureBlock)failureBlock
+                    failureBlock:(CHRTimerInitFailureBlock)failureBlock
                     NS_DESIGNATED_INITIALIZER;
 
 /**
@@ -143,7 +112,7 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
  @return    The newly created CHRDispatch object.
  */
 + (CHRDispatchTimer *)timerWithInterval:(NSTimeInterval)interval
-                         executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock;
+                         executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock;
 
 /**
  Creates and initializes a new CHRDispatchTimer object.
@@ -157,7 +126,7 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
  @return    The newly created CHRDispatch object.
  */
 + (CHRDispatchTimer *)timerWithInterval:(NSTimeInterval)interval
-                         executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                         executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
                          executionQueue:(dispatch_queue_t)executionQueue;
 
 /**
@@ -174,37 +143,9 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
  @return    The newly created CHRDispatch object.
  */
 + (CHRDispatchTimer *)timerWithInterval:(NSTimeInterval)interval
-                         executionBlock:(CHRDispatchTimerExecutionBlock)executionBlock
+                         executionBlock:(CHRRepeatingTimerExecutionBlock)executionBlock
                          executionQueue:(dispatch_queue_t)executionQueue
-                           failureBlock:(CHRDispatchTimerInitFailureBlock)failureBlock;
-
-// -----
-// @name Using a Dispatch Timer
-// -----
-
-#pragma mark Using a Dispatch Timer
-
-/**
- Starts the timer and begins executing the executionBlock at the set interval.
- 
- @param     now
-            YES if the timer should start immediately or interval seconds from
-            the current time.
- */
-- (void)start:(BOOL)now;
-
-/**
- Stops the timer and does not reset the invocation count.
- */
-- (void)pause;
-
-/**
- Permanently cancels the timer.
- 
- Attempting to send a start or pause message to a canceled timer is considered
- an error, and will result in an exception being thrown.
- */
-- (void)cancel;
+                           failureBlock:(CHRTimerInitFailureBlock)failureBlock;
 
 // -----
 // @name Properties
@@ -216,32 +157,5 @@ typedef void (^CHRDispatchTimerExecutionBlock)(__weak CHRDispatchTimer *timer, N
  The receiver's execution interval, in seconds.
  */
 @property (readonly) NSTimeInterval interval;
-
-/**
- The receiver's execution queue.
- */
-@property (readonly) dispatch_queue_t executionQueue;
-
-/**
- The receiver's execution block.
- */
-@property (readonly, copy) CHRDispatchTimerExecutionBlock executionBlock;
-
-/**
- The number of times the timer has fired.
- */
-@property (atomic, readonly) NSUInteger invocations;
-
-/**
- YES, if the timer is valid.
- 
- A timer is considered invalid if it has received the cancel message.
- */
-@property (atomic, readonly, getter=isValid) BOOL valid;
-
-/**
- YES, if the timer is currently running.
- */
-@property (atomic, readonly, getter=isRunning) BOOL running;
 
 @end

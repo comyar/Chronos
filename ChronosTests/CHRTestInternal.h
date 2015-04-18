@@ -1,5 +1,5 @@
 //
-//  Chronos.h
+//  CHRTimerTestInternal.h
 //  Chronos
 //
 //  Copyright (c) 2015 Comyar Zaheri. All rights reserved.
@@ -24,25 +24,15 @@
 //
 
 
-#pragma mark - Imports
-
-@import Foundation;
-
-
-#pragma mark - Framework
-
-// Project version number for Chronos.
-FOUNDATION_EXPORT double ChronosVersionNumber;
-
-// Project version string for Chronos.
-FOUNDATION_EXPORT const unsigned char ChronosVersionString[];
-
-// Protocols
-#import <Chronos/CHRTimer.h>
-#import <Chronos/CHRRepeatingTimer.h>
-
-// Classes
-#import <Chronos/CHRDispatchTimer.h>
-#import <Chronos/CHRVariableTimer.h>
+#ifndef Chronos_CHRTestInternal
+#define Chronos_CHRTestInternal
 
 
+#pragma mark - Constants and Functions
+
+static NSTimeInterval CHRDefaultAsyncTestTimeout = 10.0;
+static inline dispatch_time_t chr_timeout(NSTimeInterval seconds) {
+    return dispatch_time(DISPATCH_TIME_NOW, (int64_t) seconds * NSEC_PER_SEC);
+}
+
+#endif
