@@ -48,6 +48,24 @@ CHRDispatchTimer timer = [CHRDispatchTimer timerWithInterval:1.0
 
 ```
 
+```objective-c
+#import <Chronos/Chronos.h>
+
+/** Create and start a timer */
+CHRVariableTimer *timer = [CHRVariableTimer timerWithIntervalProvider:^NSTimeInterval(CHRVariableTimer *__weak timer, NSUInteger nextInvocation) {
+    return 2 * count; // Return interval according to function
+} executionBlock:^(__weak id<CHRRepeatingTimer> timer, NSUInteger invocation) {
+    NSLog(@"Execute repeating task here");
+}];
+[timer start:YES]; // Fire timer immediately
+
+/** Pausing the timer */
+[timer pause];
+
+/** Permanently canceling the timer */
+[timer cancel];
+```
+
 # Requirements
 
 * iOS 7.0 or higher
