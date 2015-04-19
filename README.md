@@ -20,13 +20,16 @@ Chronos is part of a larger library for iOS and OS X called [Olympus](https://gi
 
 ### Quick Start
 
-Chronos is available through Cocoa Pods. Add the following to your Podfile:
+##### Cocoa Pods
+
+Add the following to your Podfile:
 
 ```ruby
 pod 'Chronos'
 ```
+##### Carthage 
 
-Chronos is available through Carthage. Add the following to your Cartfile:
+Add the following to your Cartfile:
 
 ```ruby
 github "Olympus-Library/Chronos" "master"
