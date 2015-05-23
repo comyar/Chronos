@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/Olympus-Library/Resources/master/chronos-header.png)
+![](header.png)
 
 # Overview
 [![Build Status](https://travis-ci.org/comyarzaheri/Chronos.svg)](https://travis-ci.org/comyarzaheri/Chronos)
