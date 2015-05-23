@@ -9,8 +9,6 @@
 
 Chronos is a collection of useful Grand Central Dispatch utilities. If you have any specific requests or ideas for new utilities, don't hesitate to create a new issue.
 
-Chronos is part of a larger library for iOS and OS X called [Olympus](https://github.com/Olympus-Library), which is currently under active development.
-
 ## Utilities
 
 * **DispatchTimer** - A repeating timer that fires according to a static interval, e.g. "Fire every 5 seconds".
@@ -32,7 +30,7 @@ pod 'Chronos'
 Add the following to your Cartfile:
 
 ```ruby
-github "Olympus-Library/Chronos" "master"
+github "comyarzaheri/Chronos" "master"
 ```
 
 ### Using a Dispatch Timer
