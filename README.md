@@ -1,3 +1,5 @@
+# DEPRECATED IN FAVOR OF [Chronos-Swift](https://github.com/comyarzaheri/Chronos-Swift)
+
 ![](header.png)
 
 # Overview
