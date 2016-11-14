@@ -3,7 +3,7 @@
 ![](header.png)
 
 # Overview
-[![Build Status](https://travis-ci.org/comyarzaheri/Chronos.svg)](https://travis-ci.org/comyarzaheri/Chronos)
+[![Build Status](https://travis-ci.org/comyar/Chronos.svg)](https://travis-ci.org/comyar/Chronos)
 [![Version](http://img.shields.io/cocoapods/v/Chronos.svg)](http://cocoapods.org/?q=Chronos)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Olympus-Library/Chronos)
 [![Platform](http://img.shields.io/cocoapods/p/Chronos.svg)]()
