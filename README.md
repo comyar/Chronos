@@ -3,11 +3,6 @@
 ![](header.png)
 
 # Overview
-[![Build Status](https://travis-ci.org/comyar/Chronos.svg)](https://travis-ci.org/comyar/Chronos)
-[![Version](http://img.shields.io/cocoapods/v/Chronos.svg)](http://cocoapods.org/?q=Chronos)
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Olympus-Library/Chronos)
-[![Platform](http://img.shields.io/cocoapods/p/Chronos.svg)]()
-[![License](http://img.shields.io/cocoapods/l/Chronos.svg)](https://github.com/Olympus-Library/Chronos/blob/master/LICENSE)
 
 Chronos is a collection of useful Grand Central Dispatch utilities. If you have any specific requests or ideas for new utilities, don't hesitate to create a new issue.
 
